@@ -1,0 +1,42 @@
+<div class='card'>
+    <div class='card-header'>
+        <!-- {{title}}-->
+        <h3>FOSTER HOMES</h3>
+        <br>
+    </div>
+    <div class='card-body'>
+        <div class='table-responsive'>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!--<th>
+                            <!-- <button class='btn btn-primary' (click)='toggleImage()'>
+                                {{showImage? 'Hide' : 'Show'}} Image
+                            </button> -->
+                        <!-- Image
+                        </th>-->
+                        <th>Name</th>
+                        <th style="width: 30%;">Addres</th>
+                        <th>Contact Number</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let i of authors'>
+                        <td><img [src]='i.image' [title]='i.name' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
+                        </td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.description}}</td>
+                        <td>
+                            <button class="btn btn-warning" *ngIf='abc ==true' style="cursor:pointer" (click)='editAuthor(i)'> Edit</button>
+                            <button class="btn btn-danger" *ngIf='abc ==true' style="cursor:pointer; margin-left:1%" (click)='deleteAuthor(i)'>Delete</button>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma-rtl.min.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+body {
+    background-image: url('https://i.pinimg.com/736x/ff/93/ba/ff93ba024f983528fa5c2c7e73961b75.jpg');
+    font-family: Poppins, sans-serif;
+    background-size: cover;
+    min-height: 45.5em;
+    
+}
+
+h2 {
+    padding: 1%;
+    padding-top: 2%;
+    text-align: center;
+    font-size: 30px;
+    color: orange;
+    font-weight: 3em;
+}
+
+h4 {
+    padding-left: 5%;
+    color: orange;
+    background-color: white;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+h5 {
+    color: orange;
+    padding: 4%;
+    text-align: center;
+    background-color: orangered;
+}

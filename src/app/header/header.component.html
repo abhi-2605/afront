@@ -1,0 +1,50 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:rgb(240, 186, 85)">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+            <a class="navbar-brand" href="#" style="color:white; font-size: 32px; font-family: 'Style Script', cursive;"><b>Pet Me</b></a>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" *ngIf='!auth.loggedIn()' routerLink="/" style="color:white; font-size: larger;"><b>HOME</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" *ngIf='auth.loggedIn()' routerLink="/home" style="color:white; font-size: larger;"><b>HOME</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/books" style="color:white; font-size: larger;"><b>PICK ME</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/add_book" *ngIf='auth.loggedIn()' style="color:white; font-size: larger;"><b>ADD PET</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/authors" *ngIf='auth.loggedIn()' style="color:white; font-size: larger;"><b>FOSTER HOMES</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/add_author" *ngIf='abc ==true' style="color:white; font-size: larger;"><b>ADD FOSTER HOME</b></a>
+                </li>
+            </ul>
+            <ul class='navbar-nav'>
+                <a class='nav-link nav-item' routerLink="/login" *ngIf='!auth.loggedIn()' style="color:white; font-size: larger;"><b>SignIn</b></a>
+                <a class='nav-link nav-item' routerLink="/signup" *ngIf='!auth.loggedIn()' style="color:white; font-size: larger;"><b>SignUp</b></a>
+                <a class='nav-link nav-item' routerLink="/" *ngIf='auth.loggedIn()' (click)='logoutUser()'>Logout</a>
+            </ul>
+            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class='nav-item'>
+                <a class='nav-link' href="#">Hello</a>
+            </li>
+        </ul> -->
+        </div>
+    </div>
+</nav>
+<style>
+    .navbar {
+        color: burlywood;
+    }
+</style>

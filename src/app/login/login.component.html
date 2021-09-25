@@ -1,0 +1,177 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="outer">
+<div class="container" id="container">
+	
+	<div class="form-container sign-in-container" >
+		<form action="#" [formGroup]='user' (ngSubmit)='userVerify()' enctype="multipart/form-data">
+			<h1>Sign in</h1>
+			<br>
+			<span>or use your account</span>
+			<br>
+			<input type="email" placeholder="Email" class='form-control' formControlName='email' name='email'/>
+			<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'></span>
+			<input type="password" placeholder="Password" class='form-control' formControlName='password' name='password'/>
+			<span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'></span>
+			<a href="#">Forgot your password?</a>
+			<div class="form-group">
+				<div class='form-group text-center text-danger' *ngIf="errorMsg">
+					 Email ID or Password is incorrect.
+				</div><br>
+			 <button  [disabled]="user.invalid">Sign In</button>
+			</div>
+			
+		</form>
+	</div>
+	<div class="overlay-container">
+		
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				
+			</div>
+			<div class="overlay-panel overlay-left">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
+
+
+	
+<!--<title>Login Page</title>
+	
+<div class="container-fluid bgimg"></div>
+    <div class="container containers">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card card">
+			<div class="card-header">
+				<h3>Login to Your Account</h3>
+			</div>
+			<div class="card-body">
+				<form  [formGroup]='user' (ngSubmit)='userVerify()' enctype="multipart/form-data">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="height: 38px; margin-left: 5em;"><i class="fas fa-user"></i></span>
+						</div>
+						<div class='form-group'>
+			                <input type="email" class='form-control' formControlName='email' name='email' style="width: 26em; ">
+		                </div>
+					</div>
+					<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'></span>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="height: 38px; margin-left: 5em;"><i class="fas fa-key"></i></span>
+						</div>
+						<div class='form-group'>
+						    <input type="password" class='form-control' formControlName='password' name='password' style="width: 26em;">
+					    </div>
+		            </div>
+		            <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'></span>
+					<div class="row align-items-center remember">
+						<input type="checkbox" style="margin-left: 6em;">Remember Me
+					</div>
+					<div class="form-group">
+						<div class='form-group text-center text-danger' *ngIf="errorMsg">
+			                 Email ID or Password is incorrect.
+		                </div><br>
+		             <button class="btn btn-primary" style="margin-left: 46%;" [disabled]="user.invalid">Sign In</button>
+		            </div>
+	         </form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="/signup">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+	.containers{
+		position: relative;
+		padding-top: 6.5em;
+		padding-right: 7em;
+        left: 6.5em;
+        top: 0px;
+		width: 50em;
+		height: 20em;
+	}
+    .bgimg {
+ height: 93.8vh;
+  background-image: url('https://cdn.hipwallpaper.com/i/62/26/HKoPzd.jpg');
+  position: absolute;
+  top: 3em;
+  left: 0;
+  background-size: cover;
+}
+.card{
+	height: 30em;
+	border-radius: 3em;
+	border-color: white ;
+	border-width: .3em;
+	opacity:1;
+	background-color:paleturquoise;
+	width: 50em;
+}
+h3{
+	text-align: centre;
+	margin-left: 6em;
+	height: 2em;
+	margin-top: 1em;
+}
+</style>-->
+<!--<body>
+	<div class='card-header'>
+		<h3 style="text-align: center;">Log In</h3>
+	</div>
+		<h2 style="text-align: center; margin-top: 5%;">Login to explore!!</h2>
+		<div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 5%; padding-bottom: 10%;">
+		<form class="form" [formGroup]='user' (ngSubmit)='userVerify()' enctype="multipart/form-data">
+		  <div class='form-group'>
+			<label for="email">Email</label>
+			<input type="email" class='form-control' formControlName='email' name='email'>
+		  </div>
+		  <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+		  </span>
+		  <br>
+		  <div class='form-group'>
+			<label for="password">Password</label>
+			<input type="password" class='form-control' formControlName='password' name='password'>
+		  </div>
+		  <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+		  </span>
+		  <div class='form-group text-center text-danger' *ngIf="errorMsg">
+			  Email ID or Password is incorrect.
+		  </div><br>
+		  <button class="btn btn-primary" style="margin-left: 40%;" [disabled]="user.invalid">Sign In</button>
+		</form>
+		</div>
+	</body>-->
+

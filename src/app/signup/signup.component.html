@@ -1,0 +1,307 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="outer">
+<div class="container" id="container">
+	
+	<div class="form-container sign-in-container" >
+		<form action="#" [formGroup]='newUser' (ngSubmit)='userSignUp()' enctype="multipart/form-data">
+			<h1>Create Account</h1>
+			
+			<span>or use your account</span>
+			<br>
+			<input type="text" placeholder="Name" class='form-control' formControlName='name' name='name'/>
+			<span class='text-danger' *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>Name is Required</span>
+			<input type="email" placeholder="Email" class='form-control' formControlName='email' name='email'/>
+			<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>Email is Required</span>
+		    <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.email'>Enter a valid Email</span>
+		    <input type="password" placeholder="Password" class='form-control' formControlName='password' name='password'/>
+		    <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>Password is required</span>
+            <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.pattern'>Password must contain a minimum of 8 characters with atleast 1 uppercase, 1 lowercase, 1 digit and 1 special character</span>
+	        <input type="phone" class='form-control' formControlName='phone' name='phone'placeholder="Mobile Number" required> 
+			<br>
+			<table>
+			<tr><th><label for="user" style="padding-right: 2em;">FosterHome<input type="radio" id="role" formControlName='role' name="role" value="FosterHome"></label></th><br>
+				<th><label  >User<input type="radio" id="role" name="role" formControlName='role' value="user"></label></th>
+			</tr>
+		</table>
+		<br>
+	<span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.required'>Mobile Number is Required</span><span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.pattern'>Mobile Number should contain 10 digits</span>
+	<button [disabled]="newUser.invalid">Register</button>
+								<br>
+								<div class='form-group text-center text-danger' *ngIf="errorMsg">
+									<br>An account with the Email ID is alredy registered. Please Log In or create new account using a new Email ID.
+								</div>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<script>
+		const signUpButton = document.getElementById('signUp');
+		const signInButton = document.getElementById('signIn');
+		const container = document.getElementById('container');
+		
+		signUpButton.addEventListener('click', () => {
+			container.classList.add("right-panel-active");
+		});
+		
+		signInButton.addEventListener('click', () => {
+			container.classList.remove("right-panel-active");
+		});
+		</script>
+<!--<style>
+.img{
+    position: relative;
+    top:0;
+    left:0;
+}
+.img img{
+    background-size: contain;
+    height: 48.8em;
+    width:106.7em;
+}
+
+.form-control {
+	font-size: 16px;
+	transition: all 0.4s;
+	box-shadow: none;
+}
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {
+	border-radius: 50px;
+	outline: none !important;
+}
+.signup-form {
+    position: absolute;
+    top:5em;
+    left:58em;
+	width: 480px;
+	padding: 0;
+}
+.signup-form form {
+	background: white;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 40px;
+	border-radius: 3em;
+	height: 37em;
+    width:40em;
+	opacity: .8;
+}
+.text-center{
+   color: whitesmoke;
+   padding-bottom: 2em;
+}
+
+.signup-form a {
+	color: #5cb85c;
+}    
+.signup-form h2 {
+	text-align: center;
+	font-size: 34px;
+	
+	
+}
+.signup-form .hint-text {
+	color: white;
+	text-align: center;
+	margin-bottom: 1px;
+}
+
+.signup-form .btn {        
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: bold;
+	text-align: center;
+}
+.signup-btn {
+	text-align: center;
+	border-color: #5cb85c;
+	transition: all 0.4s;
+}
+.signup-btn:hover {
+	background: #5cb85c;
+	opacity: 0.8;
+}
+
+.social-btn .btn {
+	color: #fff;
+	margin: 10px 0 0 15px;
+	font-size: 15px;
+	border-radius: 50px;
+	font-weight: normal;
+	border: none;
+	transition: all 0.4s;
+}	
+.social-btn .btn:first-child {
+	margin-left: 0;
+}
+.social-btn .btn:hover {
+	opacity: 0.8;
+}
+.social-btn .btn-primary {
+	background: #507cc0;
+}
+.social-btn .btn-info {
+	background: #64ccf1;
+}
+.social-btn .btn-danger {
+	background: #df4930;
+}
+.social-btn .btn i {
+	float: left;
+	margin: 3px 10px;
+	font-size: 20px;
+}
+.bgimg {
+ height: 92.8vh;
+  background-image: url('https://specials-images.forbesimg.com/imageserve/60663652dccb5695c574fa98/960x0.jpg?fit=scale');
+ 
+  background-size: cover;
+}
+			
+</style>
+<body>
+<div class="container-fluid bgimg"></div>
+<div class="signup-form ">
+	<form [formGroup]='newUser' (ngSubmit)='userSignUp()' enctype="multipart/form-data">
+		<div class="container">
+		<h2>Create an Account</h2>
+		<div class="social-btn text-center">
+			<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-facebook"></i> Facebook</a>
+			<a href="#" class="btn btn-info btn-lg"><i class="fa fa-twitter"></i> Twitter</a>
+			<a href="#" class="btn btn-danger btn-lg"><i class="fa fa-google"></i> Google</a>
+		</div>
+		
+        <div class="form-group class">
+        	<input type="text" class='form-control' formControlName='name' name='name'placeholder="Username">
+		</div>
+		<span class='text-danger' *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>Name is Required</span>
+		<div class="form-group class1">
+			<input type="email" class='form-control' formControlName='email' name='email' placeholder="Email Id">
+        </div>
+		<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>Email is Required</span>
+		<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.email'>Enter a valid Email</span>
+		<div class="form-group">
+			<input type="password" class='form-control' formControlName='password' name='password' placeholder="Password">
+		</div>
+		<span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>Password is required</span>
+		<span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.pattern'>Password must contain a minimum of 8 characters with atleast 1 uppercase, 1 lowercase, 1 digit and 1 special character</span>
+		  <br>
+		 <div class='form-group'>
+			<input type="phone" class='form-control' formControlName='phone' name='phone'placeholder="Mobile Number" required> 
+		</div>
+		<span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.required'>Mobile Number is Required</span><span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.pattern'>Mobile Number should contain 10 digits</span>
+		<br>
+		<button class="btn btn-primary" style="margin-left: 40%;" [disabled]="newUser.invalid">Register</button>
+		<br>
+		<div class='form-group text-center text-danger' *ngIf="errorMsg">
+		<br>
+		An account with the Email ID is alredy registered. Please Log In or create new account using a new Email ID.
+		</div>
+			</div>
+		</form>
+	
+	
+    <div class="text-center">Already have an account? <a routerLink="/login">Login</a></div>
+	</div>
+</body>-->
+	<!--<body>
+			<div class='card-header'>
+				<h3 style="text-align: center;">{{title}}</h3>
+			</div>
+				<div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 5%; padding-bottom: 10%;">
+				<form class="form" [formGroup]='newUser' (ngSubmit)='userSignUp()' enctype="multipart/form-data">
+					<div class='form-group'>
+						<label for="name">Enter Name</label>
+						<input type="text" class='form-control' formControlName='name' name='name'>
+					</div>
+					<span class='text-danger' *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>
+						Name is Required
+					</span>
+					<br>
+		
+					<div class='form-group'>
+						<label for="email" >Enter Email Address</label>
+						<input type="email" class='form-control' formControlName='email' name='email'>
+					</div>
+					<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+						Email is Required
+					</span>
+					<span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.email'>
+						Enter a valid Email
+					</span>
+					<br>
+		
+					<div class='form-group'>
+						<label for="password">Enter Password</label>
+						<input type="password" class='form-control' formControlName='password' name='password'>
+					</div>
+					<span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+						Password is required
+					</span>
+					<span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.pattern'>
+						Password must contain a minimum of 8 characters with atleast 1 uppercase, 1 lowercase, 1 digit and 1 special character
+					</span>
+					<br>-->
+		
+					<!-- <div class='form-group'>
+						<label for="password_2">Re-enter Password</label>
+						<input type="password" class='form-control' formControlName='password_2' name='password_2'>
+					</div>
+					<span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.required'>
+						Please Re-enter Password
+					</span>
+					<span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.'>
+						Please Re-enter Password
+					</span>
+					<br> -->
+					
+					
+								<!-- <div class='form-group'>
+									<label for="password_2">Re-enter Password</label>
+									<input type="password" class='form-control' formControlName='password_2' name='password_2'>
+								</div>
+								<span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.required'>
+									Please Re-enter Password
+								</span>
+								<span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.'>
+									Please Re-enter Password
+								</span>
+								<br> -->
+					
+							<!--<div class='form-group'>
+									<label for="phone">Enter Phone Number</label>
+									<input type="phone" class='form-control' formControlName='phone' name='phone' required> 
+								</div>
+								<span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.required'>
+									Mobile Number is Required
+								</span>
+								<span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.pattern'>
+									Mobile Number should contain 10 digits
+								</span>
+								<br>
+								<button class="btn btn-primary" style="margin-left: 40%;" [disabled]="newUser.invalid">Register</button>
+								<br>
+								<div class='form-group text-center text-danger' *ngIf="errorMsg">
+									<br>An account with the Email ID is alredy registered. Please Log In or create new account using a new Email ID.
+								</div>
+							</form>
+							</div>
+						</body>-->
+					

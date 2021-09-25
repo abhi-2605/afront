@@ -1,0 +1,46 @@
+<body background="https://media.istockphoto.com/videos/4k-light-sunny-yellow-gradient-seamless-looped-animated-background-video-id1226202149?s=640x640">
+    <div class='card'>
+        <div class='card-header'>
+            <h3>PETS</h3>
+            <br>
+        </div>
+        <div class='card-body'>
+            <div class='table-responsive'>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <!-- <button class='btn btn-primary' (click)='toggleImage()'>
+                                {{showImage? 'Hide' : 'Show'}} Image
+                            </button> -->
+                                Image
+                            </th>
+                            <th>Breed</th>
+                            <th>Owner</th>
+                            <th>Address</th>
+                            <th style="width: 30%;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let i of books'>
+                            <td><img [src]='i.image' [title]='i.title' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
+                            </td>
+                            <td>{{i.title}}</td>
+                            <td>{{i.author}}</td>
+                            <td>{{i.genre}}</td>
+                            <td>{{i.description}}</td>
+
+                            <td>
+                                <button class="btn btn-warning" style="cursor:pointer" (click)='editBook(i)'> Edit</button>
+                                <button class="btn btn-danger" style="cursor:pointer; margin-left:1%" (click)='deleteBook(i)'>Delete</button>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
